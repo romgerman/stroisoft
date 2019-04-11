@@ -1,0 +1,13 @@
+<body>
+  <div class="container">
+    <form action="api/Echo/Send" (submit)="send($event)">
+      <div class="form-group">
+        <label for="text">Текст</label>
+        <input type="text" name="text" id="text" [(ngModel)]="inputText" class="form-control" />
+      </div>
+      <input type="submit" value="Отправить" class="btn btn-primary" />
+    </form>
+
+    <app-echo [text]="echoText"></app-echo>
+  </div>
+</body>
