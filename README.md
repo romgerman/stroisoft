@@ -1,5 +1,11 @@
 # Run
 
+### Install dependencies
+```
+cd ClientApp
+npm install
+```
+
 ### Debug
 ```
 dotnet run
