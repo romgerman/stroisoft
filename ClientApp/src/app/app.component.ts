@@ -10,12 +10,14 @@ export class AppComponent {
   inputText = '';
   echoText = '';
 
-  constructor(private echo: EchoService) { }
+  constructor(private echo: EchoService) {
+    this.echo.onEcho().subscribe((text: string) => {
+      this.echoText = text;
+    });
+  }
 
   send(e: Event) {
     e.preventDefault();
-    this.echo.send(this.inputText).subscribe((text: string) => {
-      this.echoText = text;
-    });
+    this.echo.send(this.inputText).subscribe();
   }
 }

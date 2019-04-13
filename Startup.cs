@@ -29,6 +29,8 @@ namespace stroisoft
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +50,10 @@ namespace stroisoft
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseSignalR(routes => {
+                routes.MapHub<EchoHub>("/echo");
+            });
 
             app.UseMvc(routes =>
             {
