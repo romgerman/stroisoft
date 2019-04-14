@@ -8,16 +8,16 @@ import { EchoService } from './services/echo.service';
 })
 export class AppComponent {
   inputText = '';
-  echoText = '';
+  echoText = [];
 
   constructor(private echo: EchoService) {
     this.echo.onEcho().subscribe((text: string) => {
-      this.echoText = text;
+      this.echoText.push(text);
     });
   }
 
   send(e: Event) {
     e.preventDefault();
-    this.echo.send(this.inputText).subscribe();
+    this.echo.send(this.inputText);
   }
 }

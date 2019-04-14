@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
@@ -7,7 +8,9 @@ namespace stroisoft
     {
         public async Task SendEcho(string message)
         {
-            await Clients.All.SendAsync("echo", message);
+            var callerId = Context.ConnectionId;
+            
+            await Clients.All.SendAsync("echo", string.Format("{0} ({1}) {2}", DateTime.Now.ToString(), callerId, message));
         }
     }
 }

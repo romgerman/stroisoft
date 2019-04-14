@@ -8,6 +8,7 @@
       <input type="submit" value="Отправить" class="btn btn-primary" />
     </form>
 
-    <app-echo [text]="echoText"></app-echo>
+    <app-echo *ngFor="let text of echoText.reverse()" [text]="text"></app-echo>
+
   </div>
 </body>

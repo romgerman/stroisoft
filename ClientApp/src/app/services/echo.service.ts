@@ -22,6 +22,6 @@ export class EchoService {
   }
 
   public send(text: string) {
-    return this.http.post('/api/Echo/Send', text);
+    this.connection.send('SendEcho', text);
   }
 }
