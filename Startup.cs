@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.InMemory;
 
 namespace stroisoft
 {
@@ -31,6 +33,10 @@ namespace stroisoft
             });
 
             services.AddSignalR();
+
+            services.AddDbContext<EchoContext>(options => {
+                options.UseInMemoryDatabase("EchoDatabase");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

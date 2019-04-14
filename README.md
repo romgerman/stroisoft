@@ -4,6 +4,8 @@
 ```
 cd ClientApp
 npm install
+cd ..
+dotnet add package Microsoft.EntityFrameworkCore.InMemory
 ```
 
 ### Debug
