@@ -24,4 +24,13 @@ export class EchoService {
   public send(text: string) {
     this.connection.send('SendEcho', text);
   }
+
+  public login(username: string) {
+    return new Observable(observer => {
+      this.connection.on('loggedIn', () => {
+        observer.next();
+      });
+      this.connection.send('Login', username);
+    });
+  }
 }

@@ -9,6 +9,8 @@ import { openDb, DB, UpgradeDB } from 'idb';
 })
 export class AppComponent {
   inputText = '';
+  username = '';
+  isLoggedIn = false;
   echoText = [];
   db: DB;
 
@@ -49,5 +51,12 @@ export class AppComponent {
   send(e: Event) {
     e.preventDefault();
     this.echo.send(this.inputText);
+  }
+
+  sendLogin(e: Event) {
+    e.preventDefault();
+    this.echo.login(this.username).subscribe(() => {
+      this.isLoggedIn = true;
+    });
   }
 }

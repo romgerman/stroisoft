@@ -1,6 +1,14 @@
 <body>
   <div class="container">
-    <form action="api/Echo/Send" (submit)="send($event)">
+    <form action="api/Echo/Login" (submit)="sendLogin($event)" *ngIf="!isLoggedIn">
+      <div class="form-group">
+        <label for="text">Имя пользователя</label>
+        <input type="text" name="text" id="text" [(ngModel)]="username" class="form-control" />
+      </div>
+      <input type="submit" value="Отправить" class="btn btn-primary" />
+    </form>
+    
+    <form action="api/Echo/Send" (submit)="send($event)" *ngIf="isLoggedIn">
       <div class="form-group">
         <label for="text">Текст</label>
         <input type="text" name="text" id="text" [(ngModel)]="inputText" class="form-control" />
